@@ -1,0 +1,84 @@
+.bpmn-icon-task.red {
+  color: #cc0000 !important;
+}
+
+.bpmn-icon-task.blue {
+  color: #0000cc !important;
+}
+
+.icon-custom {
+  border-radius: 50%;
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-custom.jojo-task {
+  background-image: url("../assets/task.png");
+}
+
+.icon-custom-delete {
+  background-image: url("../assets/delete.png");
+}
+.icon-custom-edit {
+  background-image: url("../assets/edit.png");
+}
+
+.icon-custom-start {
+  background-image: url("../assets/start.png");
+}
+.icon-custom-end {
+  background-image: url("../assets/end.png");
+}
+.icon-custom-business-rule {
+  background-image: url("../assets/business-rule.png");
+}
+.icon-custom-exclusive-gateway {
+  background-image: url("../assets/exclusive-gateway.png");
+}
+.icon-custom-data {
+  background-image: url("../assets/data.png");
+}
+.icon-custom-flow {
+  background-image: url("../assets/flow.png");
+}
+
+.djs-context-pad .jojo-task.entry:hover {
+  background: url("../assets/task.png") center no-repeat !important;
+  background-size: cover !important;
+}
+
+.djs-context-pad .icon-custom-delete.entry:hover {
+  background: url("../assets/delete.png") center no-repeat !important;
+  background-size: cover !important;
+}
+
+.djs-context-pad .icon-custom-edit.entry:hover {
+  background: url("../assets/edit.png") center no-repeat !important;
+  background-size: cover !important;
+}
+
+.djs-context-pad .icon-custom-start.entry:hover {
+  background: url("../assets/start.png") center no-repeat !important;
+  background-size: cover !important;
+}
+.djs-context-pad .icon-custom-end.entry:hover {
+  background: url("../assets/end.png") center no-repeat !important;
+  background-size: cover !important;
+}
+.djs-context-pad .icon-custom-business-rule.entry:hover {
+  background: url("../assets/business-rule.png") center no-repeat !important;
+  background-size: cover !important;
+}
+.djs-context-pad .icon-custom-exclusive-gateway.entry:hover {
+  background: url("../assets/exclusive-gateway.png") center no-repeat !important;
+  background-size: cover !important;
+}
+.djs-context-pad .icon-custom-data.entry:hover {
+  background: url("../assets/data.png") center no-repeat !important;
+  background-size: cover !important;
+}
+.djs-context-pad .icon-custom-flow.entry:hover {
+  background: url("../assets/flow.png") center no-repeat !important;
+  background-size: cover !important;
+}

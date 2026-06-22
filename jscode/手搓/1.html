@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安拉花瓜</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+<body>
+  <form class="container">
+    <h1>用户注册</h1>
+
+    <div class="form-item">
+      <input type="text" class="text-input" placeholder="请输入手机号" maxlength="11">
+    </div>
+
+    <div class="form-item">
+      <input type="text" class="text-input" placeholder="请输入验证码">
+      <button type="button" disabled>获取验证码</button>
+    </div>
+
+    <div class="form-item">
+      <input type="text" class="text-input" placeholder="请输入密码">
+    </div>
+
+    <div class="form-item">
+      <input type="text" class="text-input" placeholder="请确认密码">
+    </div>
+
+    <div class="form-item">
+      <select multiple class="text-input">
+        <option value="1">爱好1</option>
+        <option value="2" selected>爱好2</option>
+        <option value="3">爱好3</option>
+        <option value="4">爱好4</option>
+        <option value="5">爱好5</option>
+        <option value="6">爱好6</option>
+      </select>
+    </div>
+
+    <div class="form-item">
+      <div class="title">性别：</div>
+      <div class="form-item-content">
+        <label for="male">
+          <input type="radio" name="gender" value="male" id="male" checked />
+          <span>男</span>
+        </label>
+
+        <label for="female">
+          <input type="radio" name="gender" value="female" id="female" />
+          <span>女</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-item">
+      <textarea placeholder="请输入个人简介" class="text-input"></textarea>
+    </div>
+
+    <div class="form-item">
+      <label for="agree">
+        <input type="checkbox" name="agree" id="agree" />
+        <span>同意</span>
+      </label>
+    </div>
+
+    <div class="form-item">
+      <button type="submit" disabled>立即注册</button>
+      <button type="reset">重置表单</button>
+    </div>
+  </form>
+</body>
+</html>

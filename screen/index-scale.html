@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #design-container {
+      width: 1920px;
+      height: 1080px;
+      position: fixed;
+      transform-origin: 0 0;
+      /* 依然保持左上角基准点 */
+      background: teal;
+    }
+
+    .dashboard-item {
+      width: 500px;
+      height: 300px;
+      margin: 0 auto;
+      background: tomato;
+      position: absolute;
+      left: 200px;
+      top: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="design-container">
+    <div class="dashboard-item"></div>
+  </div>
+</body>
+<script>
+  function jojo() {
+    // 当前宽高
+    const w = 1920
+    const h = 1080
+
+    const container = document.getElementById('design-container')
+
+    // 获取当前视口尺寸
+    const currentW = window.innerWidth
+    const currentH = window.innerHeight
+
+    // 计算缩放比
+    const scale = Math.min(currentW / w, currentH / h)
+
+    const x = (currentW - w * scale) / (2 * scale)
+    const y = (currentH - h * scale) / (2 * scale)
+
+    container.style.transform = `
+    scale(${scale})
+    translate(${x}px,${y}px)
+    `
+  }
+
+
+  jojo()
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(() => {
+      jojo()
+    })
+  })
+</script>
+</html>

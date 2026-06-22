@@ -1,0 +1,45 @@
+<template>
+  <div class="person">
+    <h1>姓名:{{ name }}</h1>
+    <h1>年龄:{{ age }}</h1>
+    <h1>地址:{{ address }}</h1>
+    <button @click="changeName">修改名字</button>
+    <button @click="changeAge">修改年龄</button>
+    <button @click="showTel">查看联系方式</button>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+
+defineOptions({
+  name: "Person",
+});
+let name = ref("张三");
+let age = ref(18);
+let tel = "13888888888";
+let address = "巴伐利亚";
+
+function showTel() {
+  alert(tel);
+}
+function changeName() {
+  name.value = "神鹰哥";
+}
+function changeAge() {
+  age.value += 1;
+}
+</script>
+
+<style scoped>
+.person {
+  background-color: cadetblue;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+button {
+  margin: 0 10px;
+}
+</style>

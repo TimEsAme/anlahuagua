@@ -1,0 +1,74 @@
+<template>
+  <div
+    :class="{
+      'text-center': computedState.position,
+    }"
+  >
+    <MaterialsHeader
+      :serialNum="serialNum"
+      :title="computedState.title"
+      :desc="computedState.desc"
+      :titleSize="computedState.titleSize"
+      :descSize="computedState.descSize"
+      :titleWeight="computedState.titleWeight"
+      :descWeight="computedState.descWeight"
+      :titleItalic="computedState.titleItalic"
+      :descItalic="computedState.descItalic"
+      :titleColor="computedState.titleColor"
+      :descColor="computedState.descColor"
+    />
+    <div>
+      <el-date-picker
+        v-model="datetimeValue"
+        :type="computedState.type?.value"
+        placeholder="请选择日期"
+        @click.stop
+        @change="emitAnswer"
+      />
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
+import MaterialsHeader from '../../Common/MaterialsHeader.vue';
+import type { TypeStatus } from '@/types';
+import {
+  getCurrentStatus,
+  getStringStatusByCurrent,
+  getTextStatus,
+  getValueStatusByCurrentStatus,
+} from '@/utils';
+
+const props = defineProps<{
+  serialNum: number;
+  status: TypeStatus;
+}>();
+
+const datetimeValue = ref<Date>(new Date());
+
+const computedState = computed(() => ({
+  type: getValueStatusByCurrentStatus(props.status.type),
+  title: getTextStatus(props.status.title),
+  desc: getTextStatus(props.status.desc),
+  position: getCurrentStatus(props.status.position),
+  titleSize: getStringStatusByCurrent(props.status.titleSize),
+  descSize: getStringStatusByCurrent(props.status.descSize),
+  titleWeight: getCurrentStatus(props.status.titleWeight),
+  descWeight: getCurrentStatus(props.status.descWeight),
+  titleItalic: getCurrentStatus(props.status.titleItalic),
+  descItalic: getCurrentStatus(props.status.descItalic),
+  titleColor: getTextStatus(props.status.titleColor),
+  descColor: getTextStatus(props.status.descColor),
+}));
+
+const emitAnswer = () => {
+  // emits('updateAnswer', datetimeValue.value);
+};
+</script>
+
+<style scoped lang="scss">
+.radio-group {
+  height: 40px;
+}
+</style>

@@ -1,0 +1,38 @@
+{
+  "name": "darling-in-the-franxx",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:pro": "vue-tsc && vite build --mode production",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "axios": "^1.14.0",
+    "element-plus": "^2.13.6",
+    "fast-glob": "^3.3.3",
+    "lodash": "^4.18.1",
+    "nprogress": "^0.2.0",
+    "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.24",
+    "@types/node": "^24.12.2",
+    "@types/nprogress": "^0.2.3",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.1",
+    "mockjs": "^1.1.0",
+    "sass": "^1.99.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vite-plugin-mock": "^3.0.2",
+    "vite-svg-loader": "^5.1.1",
+    "vue-tsc": "^3.2.6"
+  }
+}
