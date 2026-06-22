@@ -74,21 +74,21 @@ const path = require('path')
 // jojo()
 
 
-function dio() {
-    const from = path.resolve(__dirname, './files/a.txt')
-    const to = path.resolve(__dirname, './files/aa.txt')
+// function dio() {
+//     const from = path.resolve(__dirname, './files/a.txt')
+//     const to = path.resolve(__dirname, './files/aa.txt')
 
-    console.time('dio')
-    const rs = fs.createReadStream(from)
-    const ws = fs.createWriteStream(to)
+//     console.time('dio')
+//     const rs = fs.createReadStream(from)
+//     const ws = fs.createWriteStream(to)
 
-    rs.pipe(ws)
+//     rs.pipe(ws)
 
-    // 监听 finish 事件，确认写入完成
-    ws.on('finish', () => {
-        console.timeEnd('dio')
-        console.log('复制完成');
-    })
-}
+//     // 监听 finish 事件，确认写入完成
+//     ws.on('finish', () => {
+//         console.timeEnd('dio')
+//         console.log('复制完成');
+//     })
+// }
 
-dio()
+// dio()
