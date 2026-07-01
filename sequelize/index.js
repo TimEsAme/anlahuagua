@@ -1,23 +1,41 @@
+// require('./models/relation')
 // require('./models/sync')
 
+// require('./spider/fetchBook')
+
+
+const classService = require('./services/classService')
 const adminService = require('./services/adminService')
+const studentService = require('./services/studentService')
 const bookService = require('./services/bookService')
 
-// adminService.addAdmin({
-//     loginId: 'joker',
-//     loginPwd: '123456',
+
+// adminService.login('jager', '123456').then((res) => {
+//     console.log(res);
+// })
+
+// adminService.getAllAdmin().then((res) => {
+//     console.log(res);
+
+// })
+
+// adminService.getAdminById(3).then((res) => {
+//     console.log(res);
 // })
 
 
-// adminService.deleteAdmin(7)
-
-// adminService.updateAdmin(5, {
-//     loginId: 'anlahuagua'
+// studentService.getStudentById(623).then((res) => {
+//     console.log(res);
 // })
 
-bookService.addorUpdateBook({
-    name: '钢铁是怎样炼成的',
-    imgurl: '',
-    publishDate: new Date(),
-    author: '尼古拉·奥斯特洛夫斯基'
+// studentService.getStudents(1, 10, 0, '杰').then((res) => {
+//     console.log(res);
+// })
+
+// classService.getClass().then((res) => {
+//     console.log(res);
+// })
+
+bookService.getBook(1, 10, '史').then((res) => {
+    console.log(res);
 })

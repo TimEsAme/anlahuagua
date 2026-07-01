@@ -38,4 +38,34 @@ exports.updateAdmin = async function (id, adminObj) {
             id
         }
     })
-} 
+}
+
+exports.login = async function (loginId, loginPwd) {
+    const res = await Admin.findOne({
+        where: {
+            loginId,
+            loginPwd
+        }
+    })
+
+    if (res && res.loginId === loginId && res.loginPwd === loginPwd) {
+        return res.toJSON()
+    }
+    return null
+}
+
+exports.getAllAdmin = async function () {
+    const res = await Admin.findAll()
+    if (res) {
+        return JSON.parse(JSON.stringify(res))
+    }
+    return null
+}
+
+exports.getAdminById = async function (id) {
+    const res = await Admin.findByPk(id)
+    if (res) {
+        return res.toJSON()
+    }
+    return null
+}
