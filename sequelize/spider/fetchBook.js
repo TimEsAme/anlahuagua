@@ -59,8 +59,8 @@ async function fetchAll() {
 
 // 存数据库
 async function saveTodb() {
-    // const books = await fetchAll()
-    // console.log(books);
+    const books = await fetchAll()
+    console.log(books);
 
     Book.bulkCreate(books).then(() => {
         console.log('数据抓取成,数据库所有书籍添加成功');

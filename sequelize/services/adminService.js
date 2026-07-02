@@ -1,6 +1,8 @@
 const Admin = require('../models/Admin')
+const md5 = require('md5')
 
 exports.addAdmin = async function (adminObj) {
+    adminObj.loginPwd = md5(adminObj.loginPwd)
     const ins = await Admin.create(adminObj)
     return ins.toJSON()
 }
@@ -24,6 +26,10 @@ exports.deleteAdmin = async function (adminId) {
 }
 
 exports.updateAdmin = async function (id, adminObj) {
+    if (adminObj.loginPwd) {
+        adminObj.loginPwd = md5(adminObj.loginPwd)
+    }
+
     // // 方法1
     // // 得到实例
     // const ins = await Admin.findByPk(id)
@@ -41,6 +47,8 @@ exports.updateAdmin = async function (id, adminObj) {
 }
 
 exports.login = async function (loginId, loginPwd) {
+
+    loginPwd = md5(loginPwd)
     const res = await Admin.findOne({
         where: {
             loginId,

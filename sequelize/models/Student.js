@@ -1,5 +1,6 @@
 const sequelize = require('./db');
 const { DataTypes } = require('sequelize');
+const moment = require('moment')
 const Student = sequelize.define('Student', {
     name: {
         type: DataTypes.STRING,
@@ -7,7 +8,18 @@ const Student = sequelize.define('Student', {
     },
     birthday: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        get() {
+            return this.getDataValue('birthday').getTime()
+        }
+    },
+    age: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            const now = moment.utc()
+            const birthday = moment.utc(this.birthday)
+            return now.diff(birthday, 'y')
+        }
     },
     gender: {
         type: DataTypes.BOOLEAN,
