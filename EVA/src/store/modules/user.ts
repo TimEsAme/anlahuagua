@@ -33,9 +33,9 @@ const useUserStore = defineStore("User", {
     };
   },
 
-  // persist: {
-  //   pick: ["token"],
-  // },
+  persist: {
+    pick: ["token"],
+  },
 
   actions: {
     // 登录

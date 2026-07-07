@@ -16,6 +16,7 @@ module.exports = class extends EventEmitter {
             })
             res.on('end', () => {
                 this.emit('jojo', res.headers, result)
+
             })
         })
         if (body) {

@@ -1,5 +1,6 @@
 const Admin = require('../models/Admin')
 const md5 = require('md5')
+const { getErr } = require('../utils/getSendRes')
 
 exports.addAdmin = async function (adminObj) {
     adminObj.loginPwd = md5(adminObj.loginPwd)
@@ -47,7 +48,6 @@ exports.updateAdmin = async function (id, adminObj) {
 }
 
 exports.login = async function (loginId, loginPwd) {
-
     loginPwd = md5(loginPwd)
     const res = await Admin.findOne({
         where: {
@@ -56,10 +56,10 @@ exports.login = async function (loginId, loginPwd) {
         }
     })
 
-    if (res && res.loginId === loginId && res.loginPwd === loginPwd) {
-        return res.toJSON()
+    if (!res) {
+        return null
     }
-    return null
+    return res.toJSON()
 }
 
 exports.getAllAdmin = async function () {

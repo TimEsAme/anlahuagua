@@ -1,0 +1,14 @@
+{
+  "watch": ["."],
+  "ignore": [
+    "node_modules",
+    "client",
+    "public",
+    "package*.json",
+    "pnpm-lock.yaml"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 9527
+  }
+}

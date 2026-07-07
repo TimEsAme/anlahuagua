@@ -85,3 +85,39 @@ const studentService = require('./services/studentService')
 // studentService.getStudents().then(res => {
 //     console.log(res);
 // })
+
+
+
+
+
+
+
+
+// require('./init')
+
+// const express = require('express')
+// const app = express()
+
+// app.get('/anlahuagua/:id/:num', (req, res) => {
+//     // 获取请求信息
+//     console.log('请求头', req.headers);
+//     console.log('请求路径', req.path);
+//     console.log('query', req.query);
+//     console.log('params', req.params);
+
+
+//     // 响应
+//     // res.setHeader('a', '10086')
+//     // res.send('<h1>安拉花瓜</h1>')
+
+//     // 重定向
+//     // res.status(302).header('location', 'https://www.bilibili.com').end()
+//     // res.status(302).location('https://www.bilibili.com').end()
+//     res.redirect(302, "https://www.bilibili.com");
+// })
+
+
+// const port = 9527
+// app.listen(port, () => {
+//     console.log('编号9527,周星星');
+// })

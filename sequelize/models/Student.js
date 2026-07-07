@@ -10,7 +10,10 @@ const Student = sequelize.define('Student', {
         type: DataTypes.DATE,
         allowNull: false,
         get() {
-            return this.getDataValue('birthday').getTime()
+            const birthday = this.getDataValue('birthday')
+            if (birthday) {
+                return birthday.getTime()
+            }
         }
     },
     age: {

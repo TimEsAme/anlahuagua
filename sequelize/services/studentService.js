@@ -5,10 +5,43 @@ const validate = require('validate.js')
 const moment = require('moment')
 const { pick } = require('../utils/propertyHelper')
 
-exports.addStudent = async function (studentObj) {
+// 分页查询
+exports.getStudents = async function (page = 1, limit = 10, gender = -1, name) {
+    const where = {}
+    if (gender !== -1) {
+        where.gender = Boolean(gender)
+    }
+    if (name) {
+        where.name = {
+            [Op.like]: `%${name}%`,
+        }
+    }
 
+    const res = await Student.findAndCountAll({
+        attributes: ['id', 'name', 'gender', 'birthday', 'age'],
+        where,
+        include: [Class],
+        offset: (page - 1) * limit,
+        limit: +limit
+    })
+    return {
+        total: res.count,
+        data: JSON.parse(JSON.stringify(res.rows))
+    }
+
+}
+
+
+exports.getStudentById = async function (id) {
+    const res = await Student.findByPk(id)
+    if (res) {
+        return res.toJSON()
+    }
+    return null
+}
+
+exports.addStudent = async function (studentObj) {
     studentObj = pick(studentObj, 'name', 'birthday', 'gender', 'mobile', 'classId')
-    // console.log(studentObj);
 
     validate.validators.classExits = async function (value) {
         const res = await Class.findByPk(value)
@@ -64,67 +97,32 @@ exports.addStudent = async function (studentObj) {
 
     await validate.async(studentObj, rule)
 
-    // const ins = await Student.create(studentObj)
-    // return ins.toJSON()
+    const ins = await Student.create(studentObj)
+    return ins.toJSON()
 }
 
+
 exports.deleteStudent = async function (studentId) {
-    await Student.destroy({
+    const res = await Student.destroy({
         where: {
             id: studentId
         }
     })
+
+    return res
+
 }
 
 exports.updateStudent = async function (id, studentObj) {
-    await Student.update(studentObj, {
+    const res = await Student.update(studentObj, {
         where: {
             id
         }
     })
-}
-
-exports.getStudentById = async function (id) {
-    const res = await Student.findByPk(id)
-    if (res) {
-        return res
-    }
-    return null
-}
-
-// 分页查询
-exports.getStudents = async function (page = 1, limit = 10, gender = -1, name) {
-    const where = {}
-    if (gender !== -1) {
-        where.gender = Boolean(gender)
-    }
-    if (name) {
-        where.name = {
-            [Op.like]: `%${name}%`,
-        }
-    }
-
-    const res = await Student.findAndCountAll({
-        attributes: ['id', 'name', 'gender', 'birthday', 'age'],
-        where,
-        include: [Class],
-        offset: (page - 1) * limit,
-        limit: +limit
-    })
-    return {
-        total: res.count,
-        data: JSON.parse(JSON.stringify(res.rows))
-    }
-
+    return res
 }
 
 
-exports.getStudentById = async function (id) {
-    const res = await Student.findByPk(id)
-    if (res) {
-        return res.toJSON()
-    }
-    return null
-}
+
 
 
