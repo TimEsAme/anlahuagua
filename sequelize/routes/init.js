@@ -1,13 +1,17 @@
 const express = require('express');
 const path = require('path')
 const cors = require('cors')
+const history = require('connect-history-api-fallback')
 // const session = require('express-session')
 const staticPath = path.resolve(__dirname, '../public')
-const app = express()
+
 const port = 9527
+const app = express()
+
+app.use(history())
 
 // session中间件
-// app.use(session({
+// app.use(session({  
 //     secret: 'jojo',
 //     name: 'sessionid'
 // }))

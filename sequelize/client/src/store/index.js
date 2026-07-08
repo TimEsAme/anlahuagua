@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user', {
             return Promise.reject(new Error(res.msg));
 
         },
-        async userInfo() {
+        async getUserInfo() {
             const res = await info()
             this.userInfo = res.data
         }

@@ -1,15 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../components/Login.vue";
-import Home from "../components/Home.vue";
 import { useUserStore } from "../store";
 const routes = [
     {
         path: "/",
-        component: Home,
+        name: 'home',
+        component: () => import('../components/Home.vue')
     },
     {
         path: "/login",
-        component: Login
+        name: 'login',
+        component: () => import('../components/Login.vue')
+    },
+    {
+        path: "/ash",
+        name: 'ash',
+        component: () => import('../components/Ash.vue')
     },
 ];
 
@@ -22,22 +27,26 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
     const userStore = useUserStore();
-
-
     // 1. 没token
     if (!userStore.token) {
-        if (to.path === '/login') {
+        if (to.path === '/login' || to.path === '/') {
             return true
         }
+        return '/login'
     } else {
+        if (to.path === '/login') {
+            return '/';
+        }
+
         // 2. 有token，但是没有用户信息
         if (!userStore.userInfo.loginId) {
             try {
-                await userStore.userInfo();
-                return { ...to, replace: true };
+                await userStore.getUserInfo();
+                return true
             } catch (err) {
                 // token失效
                 userStore.token = '';
+                userStore.userInfo = {};
                 localStorage.removeItem('token');
                 return "/login";
             }
@@ -45,12 +54,6 @@ router.beforeEach(async (to) => {
             return true
         }
     }
-
-
-
-
-
-    return true;
 });
 
 export default router;

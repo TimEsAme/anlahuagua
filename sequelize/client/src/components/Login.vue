@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from "vue";
+import { ref } from "vue";
 import { useUserStore } from "../store";
 import { useRouter } from "vue-router";
 const userStore = useUserStore();
@@ -44,82 +44,89 @@ const loginEvent = async () => {
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .login-container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f5f7fa;
+
+  background: #f0f2f5;
 }
 
 .login-box {
-  background: #ffffff;
-  padding: 48px 40px;
+  width: 360px;
+
+  padding: 40px;
+
+  background: #fff;
+
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 400px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   text-align: center;
-  font-size: 28px;
+
+  font-size: 26px;
   font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 32px;
-  letter-spacing: 2px;
+
+  color: #333;
+
+  margin-bottom: 30px;
 }
 
+/* 输入框 */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .input-field {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-  font-size: 15px;
-  color: #333;
-  background: #fafafa;
-  transition: border-color 0.2s;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 5px;
+
+  font-size: 14px;
+
   outline: none;
+
+  transition: 0.2s;
 }
 
 .input-field:focus {
   border-color: #409eff;
-  background: #ffffff;
 }
 
-.input-field::placeholder {
-  color: #bfbfbf;
-}
-
+/* 登录按钮 */
 .login-btn {
   width: 100%;
-  padding: 12px;
-  background: #409eff;
-  color: #ffffff;
+
+  height: 42px;
+
+  margin-top: 10px;
+
   border: none;
-  border-radius: 4px;
+
+  border-radius: 5px;
+
+  background: #409eff;
+
+  color: white;
+
   font-size: 16px;
-  font-weight: 500;
+
   cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 8px;
+
+  transition: 0.2s;
 }
 
 .login-btn:hover {
   background: #66b1ff;
-}
-
-.login-btn:active {
-  background: #3a8ee6;
 }
 </style>
