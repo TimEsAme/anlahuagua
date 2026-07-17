@@ -1,0 +1,10 @@
+{
+  "watch": ["server.js", "src"],
+  "ignore": ["node_modules", "pnpm-lock.yaml", "logs"],
+  "ext": "js,json",
+  "delay": 500,
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "9527"
+  }
+}
