@@ -23,4 +23,8 @@ export default defineNuxtConfig({
   elementPlus: {
     icon: "",
   },
+
+  devServer: {
+    port: 9527,
+  },
 });

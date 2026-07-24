@@ -9,7 +9,7 @@
         >Login
       </RouterLink>
       <div class="jojo" @click="logOut" v-else>
-        {{ userStore.userInfo.loginId || "loading..." }}
+        {{ (userStore.userInfo as any).loginId || "loading..." }}
       </div>
     </header>
 
